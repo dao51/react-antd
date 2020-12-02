@@ -151,6 +151,23 @@ module.exports = function (webpackEnv) {
           },
         }
       );
+      if (preProcessor === 'less-loader') {
+        loaders.push(
+          {
+            loader: require.resolve('less-loader'),
+            options: {
+              modifyVars: {
+                'primary-color': '#f9c700'
+              },
+              javascriptEnabled: true
+            }
+          }
+        );
+        // loader.options.modifyVars = {
+        //   'primary-color': '#f9c700'
+        // }
+        // loader.options.javascriptEnabled = true
+      }
     }
     return loaders;
   };
@@ -406,6 +423,11 @@ module.exports = function (webpackEnv) {
                 ],
                 
                 plugins: [
+                  //要插入的内容
+                  ['import', {
+                    libraryName: 'antd', //libraryName表示导出的库名，
+                    style: 'css'  //style表示将css引入项目行内样式
+                  }],
                   [
                     require.resolve('babel-plugin-named-asset-import'),
                     {

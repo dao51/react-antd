@@ -14,6 +14,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.0",
     "babel-loader": "8.1.0",
+    "babel-plugin-import": "^1.13.3",
     "babel-plugin-named-asset-import": "^0.3.7",
     "babel-preset-react-app": "^10.0.0",
     "bfj": "^7.0.2",
@@ -147,5 +148,12 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "antd": "^4.9.1",
+    "axios": "^0.21.0",
+    "less": "^3.12.2",
+    "less-loader": "^7.1.0",
+    "react-router-dom": "^5.2.0"
   }
 }
