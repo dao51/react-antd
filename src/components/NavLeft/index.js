@@ -7,6 +7,21 @@ import './index.less';
 const { SubMenu } = Menu;
 
 export default class NavLeft extends React.Component {
+    componentWillMount() { // 生命周期钩子函数：组件加载时只调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
+        // React17删除componentWillMount、componentWillReceivePorps，componentWillUpdate，旧版本可用这些钩子函数
+        const menuTreeNode = this.renderMenu(MenuConfig);
+
+        this.setState({  // 设置虚拟Dom状态，必须使用其来修改数据，不可直接修改数据
+            menuTreeNode
+        })
+    }
+
+
+    // 菜单渲染
+    renderMenu = (data) => {
+
+    }
+
     render() {
         // var redWord = {
         //     color: 'red'
@@ -21,12 +36,8 @@ export default class NavLeft extends React.Component {
                 <Menu
                     theme="dark"
                 >
-                    <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-                        <Menu.Item key="1">Option 1</Menu.Item>
-                        <Menu.Item key="2">Option 2</Menu.Item>
-                        <Menu.Item key="3">Option 3</Menu.Item>
-                        <Menu.Item key="4">Option 4</Menu.Item>
-                    </SubMenu>
+                    {/* 设置渲染数据 */}
+                    { this.state.menuTreeNode }
                 </Menu>
             </div>
         );
