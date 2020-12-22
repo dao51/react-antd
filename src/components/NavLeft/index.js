@@ -1,6 +1,6 @@
 import React from 'react';  // 导入react
 import { Menu } from 'antd';  // 导入菜单组件
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';  // 导入icon
+// import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';  // 导入icon
 import MenuConfig from './../../config/menuConfig';  // 导入菜单路由文件
 import './index.less';
 
@@ -19,7 +19,14 @@ export default class NavLeft extends React.Component {
 
     // 菜单渲染
     renderMenu = (data) => {
-
+        return data.map((item) =>{
+            if(item.children) {
+                return <SubMenu key={item.key} title={item.title}>
+                    { this.renderMenu(item.children) } {/* 递归调用 */}
+                </SubMenu>
+            }
+            return <Menu.Item key={item.key}>{ item.title }</Menu.Item>
+        })
     }
 
     render() {
