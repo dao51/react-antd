@@ -7,10 +7,10 @@ import './index.less';
 const { SubMenu } = Menu;
 
 export default class NavLeft extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor(props) {  // 构造函数
+        super(props)   // 继承属性
 
-        this.state = {
+        this.state = { // 初始数据
             menuTreeNode: []
         }
     }
@@ -26,10 +26,7 @@ export default class NavLeft extends React.Component {
     componentDidMount() { // 生命周期钩子函数：在第一次渲染后调用，只在客户端，可在新版中替代componentWillMount
         const menuTreeNode = this.renderMenu(MenuConfig);
 
-        // this.setState({  // 设置虚拟Dom状态，必须使用其来修改数据，不可直接修改数据
-        //     menuTreeNode
-        // })
-        this.setState({
+        this.setState({  // 设置虚拟Dom状态，必须使用其来修改数据，不可直接修改数据
             menuTreeNode: menuTreeNode
         })
     }
