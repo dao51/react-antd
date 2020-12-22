@@ -7,12 +7,30 @@ import './index.less';
 const { SubMenu } = Menu;
 
 export default class NavLeft extends React.Component {
-    componentWillMount() { // 生命周期钩子函数：组件加载时只调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            menuTreeNode: []
+        }
+    }
+    /*componentWillMount() { // 生命周期钩子函数：组件加载时只调用，以后组件更新不调用，整个生命周期只调用一次，此时可以修改state
         // React17删除componentWillMount、componentWillReceivePorps，componentWillUpdate，旧版本可用这些钩子函数
         const menuTreeNode = this.renderMenu(MenuConfig);
 
         this.setState({  // 设置虚拟Dom状态，必须使用其来修改数据，不可直接修改数据
             menuTreeNode
+        })
+    }*/
+
+    componentDidMount() { // 生命周期钩子函数：在第一次渲染后调用，只在客户端，可在新版中替代componentWillMount
+        const menuTreeNode = this.renderMenu(MenuConfig);
+
+        // this.setState({  // 设置虚拟Dom状态，必须使用其来修改数据，不可直接修改数据
+        //     menuTreeNode
+        // })
+        this.setState({
+            menuTreeNode: menuTreeNode
         })
     }
 
