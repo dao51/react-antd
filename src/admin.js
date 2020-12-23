@@ -3,6 +3,7 @@ import {Row, Col} from 'antd'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import NavLeft from './components/NavLeft'
+import Home from './views/Home'
 import './styles/common.less'
 
 export default class Admin extends React.Component {  // 导出继承react组件的对象Admin
@@ -16,7 +17,9 @@ export default class Admin extends React.Component {  // 导出继承react组件
                     <Col span="21" className="main">
                         <Header>
                         </Header>
-                        <Row className="content">content</Row>
+                        <Row className="content">
+                            <Home></Home>
+                        </Row>
                         <Footer>
                         </Footer>
                     </Col>
