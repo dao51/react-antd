@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import Admin from './admin';
-import Home from './views/routeDemo/route1/Home';
+// import Admin from './admin';
+// import Home from './views/routeDemo/route1/Home';
+import Router from './views/routeDemo/route2/router';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home/>
+    <Router/>
   </React.StrictMode>,
   document.getElementById('root')
 );
