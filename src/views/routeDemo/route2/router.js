@@ -10,7 +10,12 @@ export default class IRouter extends React.Component {
         return (
             <Router>
                 <Home>
-                    <Route exact={true} path="/" component={Main}></Route>
+                    {/* render方法，渲染一个组件，其中包裹一个子路由，常用来处理嵌套路由 */}
+                    <Route path="/main" render={()=>
+                        <Main>
+                            <Route path="/main/a" component={About}></Route>
+                        </Main>
+                    }></Route>
                     <Route path="/about" component={About}></Route>
                     <Route path="/topic" component={Topic}></Route>
                 </Home>

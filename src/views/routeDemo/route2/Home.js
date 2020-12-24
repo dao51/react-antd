@@ -7,7 +7,7 @@ export default class Home extends React.Component {
             <div>
                 <ul>
                     <li>
-                        <Link to="/">Home1</Link>  {/* Link相当于a标签 */}
+                        <Link to="/main">Home1</Link>  {/* Link相当于a标签 */}
                     </li>
                     <li>
                         <Link to="/about">About1</Link>
