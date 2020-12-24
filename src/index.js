@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import Admin from './admin';
+import Home from './views/routeDemo/route1/Home';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Admin/>
+    <Home/>
   </React.StrictMode>,
   document.getElementById('root')
 );
