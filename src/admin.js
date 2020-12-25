@@ -18,7 +18,8 @@ export default class Admin extends React.Component {  // 导出继承react组件
                         <Header>
                         </Header>
                         <Row className="content">
-                            <Home></Home>
+                            {/* <Home></Home> */}
+                            {this.props.children}
                         </Row>
                         <Footer>
                         </Footer>

@@ -4,7 +4,7 @@ import './index.css';
 // import App from './App';
 // import Admin from './admin';
 // import Home from './views/routeDemo/route1/Home';
-import Router from './views/routeDemo/route3/router';
+import Router from './router';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

@@ -3,6 +3,7 @@ import { Menu } from 'antd';  // 导入菜单组件
 // import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';  // 导入icon
 import MenuConfig from './../../config/menuConfig';  // 导入菜单路由文件
 import './index.less';
+import { NavLink } from 'react-router-dom';
 
 const { SubMenu } = Menu;
 
@@ -40,7 +41,9 @@ export default class NavLeft extends React.Component {
                     { this.renderMenu(item.children) } {/* 递归调用 */}
                 </SubMenu>
             }
-            return <Menu.Item key={item.key}>{ item.title }</Menu.Item>
+            return <Menu.Item key={item.key} title={item.title}>
+                <NavLink to={item.key}>{ item.title }</NavLink>
+            </Menu.Item>
         })
     }
 
