@@ -7,6 +7,8 @@ import './index.css';
 import Router from './router';
 import reportWebVitals from './reportWebVitals';
 
+// StrictMode 严格模式下，弹出对话框等会报警，可去掉<React.StrictMode>
+
 ReactDOM.render(
   <React.StrictMode>
     <Router/>
