@@ -13,6 +13,7 @@ import Gallery from './views/ui/gallery';
 import Carousel from './views/ui/carousel';
 import NoMatch from './views/NoMatch';
 import FormLogin from './views/form/login';
+import Register from './views/form/register';
 
 export default class IRouter extends React.Component {  
     render() {
@@ -33,6 +34,7 @@ export default class IRouter extends React.Component {
                                 <Route path="/admin/ui/carousel" component={Carousel}></Route>
                                 <Route path="/admin/ui/carousel" component={Carousel}></Route>
                                 <Route path="/admin/form/login" component={FormLogin}></Route>
+                                <Route path="/admin/form/reg" component={Register}></Route>
                                 <Route component={NoMatch}></Route>
                             </Switch>
                         </Admin>
