@@ -1,10 +1,12 @@
 import React from 'react';
 import {Card, Table} from 'antd';
+import axios from 'axios'
 
 export default class BasicTables extends React.Component{
     // 声明state，否则报错
     state = {
-        dataSource: []
+        dataSource: [],
+        dataSource2: []
     }
 
     componentDidMount(){
@@ -43,6 +45,22 @@ export default class BasicTables extends React.Component{
         this.setState({
             dataSource
         })
+
+        this.request();
+    }
+
+    //动态获取mock数据
+    request = () => {
+        let baseApi = 'https://www.easy-mock.com/mock/5c2c7c1b580d6209d1e2aa88/mockapi'
+        axios.get(baseApi + '/table/list')
+            .then((res) => {
+                if(res.status == '200' && res.data.code == 0) {
+                    console.log(JSON.stringify(res))
+                    this.setState({
+                        dataSource2: res.data.result
+                    })
+                }
+            })
     }
 
     render(){
@@ -88,6 +106,14 @@ export default class BasicTables extends React.Component{
                         bordered
                         columns={columns}
                         dataSource={this.state.dataSource}
+                        pagination={false}
+                    />
+                </Card>
+                <Card title="动态数据表格" style={{margin: '10px 0'}}>
+                    <Table 
+                        bordered
+                        columns={columns}
+                        dataSource={this.state.dataSource2}
                         pagination={false}
                     />
                 </Card>
