@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, Table} from 'antd';
-import axios from 'axios'
+import axios from './../../axios/index'
 
 export default class BasicTables extends React.Component{
     // 声明state，否则报错
@@ -51,16 +51,20 @@ export default class BasicTables extends React.Component{
 
     //动态获取mock数据
     request = () => {
-        let baseApi = 'https://www.easy-mock.com/mock/5c2c7c1b580d6209d1e2aa88/mockapi'
-        axios.get(baseApi + '/table/list')
-            .then((res) => {
-                if(res.status == '200' && res.data.code == 0) {
-                    console.log(JSON.stringify(res))
-                    this.setState({
-                        dataSource2: res.data.result
-                    })
+        axios.ajax({
+            url: '/table/list',
+            data: {
+                params: {
+                    page: 1
                 }
-            })
+            }
+        }).then((res) => {
+            if(res.code == 0) {
+                this.setState({
+                    dataSource2: res.result
+                })
+            }
+        })
     }
 
     render(){
