@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Table} from 'antd';
+import {Card, Table, Modal} from 'antd';
 import axios from './../../axios/index'
 
 export default class BasicTables extends React.Component{
@@ -42,6 +42,9 @@ export default class BasicTables extends React.Component{
                 time: '07:00'
             }
         ]
+        dataSource.map((item, index) => {
+            item.key = index;
+        })
         this.setState({
             dataSource
         })
@@ -57,14 +60,29 @@ export default class BasicTables extends React.Component{
                 params: {
                     page: 1
                 },
-                // isShowLoading: false
+                isShowLoading: false
             }
         }).then((res) => {
             if(res.code == 0) {
+                res.list.map((item, index) => {
+                    item.key = index
+                })
                 this.setState({
                     dataSource2: res.result
                 })
             }
+        })
+    }
+
+    onRowClick = (record, index) => {
+        let selectKey = [index];
+        Modal.info({
+            title: '信息',
+            content: `用户名：${record.userName},用户爱好：${record.interest}`
+        });
+        this.setState({
+            selectedRowKeys: selectKey,
+            selectedItem: record
         })
     }
 
@@ -130,6 +148,12 @@ export default class BasicTables extends React.Component{
              }       
         ]
 
+        const selectedRowKeys = this.state.selectedRowKeys;
+        const rowSelection = {
+            type: 'radio',
+            selectedRowKeys
+        }
+
         return (
             <div>
                 <Card title="基础表格">
@@ -145,6 +169,22 @@ export default class BasicTables extends React.Component{
                         bordered
                         columns={columns}
                         dataSource={this.state.dataSource2}
+                        pagination={false}
+                    />
+                </Card>
+                <Card title="Mock-单选" style={{margin: '10px 0'}}>
+                    <Table 
+                        bordered
+                        rowSelection={rowSelection}
+                        onRow={(record, index) => {
+                            return {
+                                onClick: () => { 
+                                    this.onRowClick(record, index)
+                                }  //点击行
+                            }
+                        }}
+                        columns={columns}
+                        dataSource={this.state.dataSource}
                         pagination={false}
                     />
                 </Card>
