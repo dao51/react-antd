@@ -1,12 +1,17 @@
 import React from 'react';
 import {Card, Table, Modal, message, Button} from 'antd';
 import axios from './../../axios/index'
+import Utils from './../../utils/utils'
 
 export default class BasicTables extends React.Component{
     // 声明state，否则报错
     state = {
         dataSource: [],
         dataSource2: []
+    }
+
+    params = {
+        page: 1
     }
 
     componentDidMount(){
@@ -54,6 +59,7 @@ export default class BasicTables extends React.Component{
 
     //动态获取mock数据
     request = () => {
+        let _this = this;
         axios.ajax({
             url: '/table/list',
             data: {
@@ -71,6 +77,10 @@ export default class BasicTables extends React.Component{
                     dataSource2: res.result,
                     selectedRowKeys: [], //重置
                     selectedRows: null,
+                    pagination: Utils.pagination(res,(current) => {
+                        _this.params.page = current;
+                        this.request();
+                    })
                 })
             }
         })
@@ -242,6 +252,14 @@ export default class BasicTables extends React.Component{
                         columns={columns}
                         dataSource={this.state.dataSource}
                         pagination={false}
+                    />
+                </Card>
+                <Card title="Mock-表格分页" style={{margin: '10px 0'}}>
+                    <Table 
+                        bordered
+                        columns={columns}
+                        dataSource={this.state.dataSource2}
+                        pagination={this.state.pagination}
                     />
                 </Card>
             </div>
