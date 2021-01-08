@@ -16,6 +16,7 @@ import FormLogin from './views/form/login';
 import Register from './views/form/register';
 import BasicTable from './views/table/basicTable';
 import HighTable from './views/table/highTable';
+import RichText from './views/rich/index';
 
 export default class IRouter extends React.Component {  
     render() {
@@ -39,6 +40,7 @@ export default class IRouter extends React.Component {
                                 <Route path="/admin/form/reg" component={Register}></Route>
                                 <Route path="/admin/table/basic" component={BasicTable}></Route>
                                 <Route path="/admin/table/high" component={HighTable}></Route>
+                                <Route path="/admin/rich" component={RichText}></Route>
                                 <Route component={NoMatch}></Route>
                             </Switch>
                         </Admin>
